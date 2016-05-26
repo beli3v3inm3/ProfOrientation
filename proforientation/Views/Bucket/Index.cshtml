@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "title";
+}
+
+<h2>title</h2>
+
+<div class="container" ng-app="app">
+    <div class="row" ng-controller="BucketController">
+        <div class="list-group" ng-repeat="order in orders">
+            <a href="#" class="list-group-item">
+                <h4 class="list-group-item-heading">{{order.Name}}</h4>
+                <p class="list-group-item-text">{{order.Description}}</p>
+            </a>
+        </div>
+        <button type="button" class="btn btn-primary" ng-click="SubmitOrders()">Submit</button>
+    </div>
+</div>

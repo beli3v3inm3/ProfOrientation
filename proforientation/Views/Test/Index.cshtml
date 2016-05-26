@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Testing";
+}
+
+<div ng-app="app">
+
+    <div ng-controller="TestController">
+
+
+        <div class="body-content text-center thumbnail" ng-repeat="q in questions">
+
+
+            <h2>{{q.Id}}. {{q.Question}}</h2>
+            <p>
+                <label class="radio" ng-repeat="a in testAnswers">
+                    <input type="radio" name="inlineRadioOptions" ng-model="currentAnswer" ng-value="a" ng-click="setAnswer(a.ScoreAnswer, a.Id)"> {{a.Name}}
+                </label>
+            </p>
+
+            <button type="button" class="btn btn-primary" ng-click="nextQuestion()">Next</button>
+            <button type="submit" class="btn btn-primary btn-submit" ng-click="onSubmit()">Submit</button>
+            <div class="text-center" ng-show="showResult">
+                <h4>You proffesion: {{result}} !</h4>
+            </div>
+        </div>
+    </div>
+</div>
