@@ -13,8 +13,8 @@
             return $http.get('/bucket/GetAllOrders');
         }
 
-        function clearOrder() {
-            return $http.delete('/bucket/CleatOrders');
+        function clearOrder(bucket) {
+            return $http.post('/bucket/CleatOrders', bucket);
         }
 
         var service = {

@@ -7,10 +7,10 @@ namespace proforientation.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ProfessionRepository _professionRepository;
-        private readonly BucketRepository _bucketRepository;
+        private readonly IProfessionRepository _professionRepository;
+        private readonly IBucketRepository _bucketRepository;
 
-        public HomeController(ProfessionRepository professionRepository, BucketRepository bucketRepository)
+        public HomeController(IProfessionRepository professionRepository, IBucketRepository bucketRepository)
         {
             _professionRepository = professionRepository;
             _bucketRepository = bucketRepository;

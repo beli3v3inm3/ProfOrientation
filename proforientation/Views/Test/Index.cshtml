@@ -11,11 +11,9 @@
 
 
             <h2>{{q.Id}}. {{q.Question}}</h2>
-            <p>
-                <label class="radio" ng-repeat="a in testAnswers">
-                    <input type="radio" name="inlineRadioOptions" ng-model="currentAnswer" ng-value="a" ng-click="setAnswer(a.ScoreAnswer, a.Id)"> {{a.Name}}
-                </label>
-            </p>
+            <div id="rdbuttons"  ng-repeat="a in testAnswers">
+               <input type="radio" name="inlineRadioOptions" ng-model="currentAnswer" ng-value="a" ng-click="setAnswer(a.ScoreAnswer, a.Id)"><label>{{a.Name}}</label>
+             </div>
 
             <button type="button" class="btn btn-primary" ng-click="nextQuestion()">Next</button>
             <button type="submit" class="btn btn-primary btn-submit" ng-click="onSubmit()">Submit</button>

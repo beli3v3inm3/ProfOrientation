@@ -20,8 +20,6 @@
             answers: {}
         };
         $scope.profesions = [];
-        $scope.pushsrv;
-        $scope.numberOfCorrectAnswers;
         $scope.showResult = false;
 
         Testing();

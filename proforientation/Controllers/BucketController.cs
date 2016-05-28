@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using proforientation.Models;
 using proforientation.Repository;
 
 namespace proforientation.Controllers
@@ -26,8 +27,8 @@ namespace proforientation.Controllers
             return Json(_bucketRepository.GettAllOrders(user), JsonRequestBehavior.AllowGet);
         }
 
-        [HttpDelete]
-        public JsonResult CleatOrders()
+        [HttpPost]
+        public JsonResult CleatOrders(Bucket bucket)
         {
             var user = User.Identity.GetUserId();
 

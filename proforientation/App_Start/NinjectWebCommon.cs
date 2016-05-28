@@ -62,6 +62,8 @@ namespace proforientation
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<ITestRepository>().To<TestRepository>();
+            kernel.Bind<IBucketRepository>().To<BucketRepository>();
+            kernel.Bind<IProfessionRepository>().To<ProfessionRepository>();
         }        
     }
 }

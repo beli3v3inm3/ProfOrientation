@@ -40,10 +40,6 @@ body {
     color: #d17581;
 }
 
-.thumbnail {
-    padding: 0;
-}
-
 .thumbnail .caption-full {
     padding: 9px;
     color: #333;
@@ -60,4 +56,13 @@ footer {
 .radioin {
     float: none;
     margin-left: -20px;
+}
+
+#rdbuttons {
+    width: 100%;
+    margin: 0 auto;
+}
+
+#rdbuttons input {
+    margin-right: 5px;
 }

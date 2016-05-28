@@ -49,6 +49,7 @@ namespace proforientation.Repository
             {
                 _dbContext.Buckets.Remove(bucket);
             }
+            _dbContext.SaveChanges();
         }
     }
 }

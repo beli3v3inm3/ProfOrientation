@@ -7,9 +7,9 @@ namespace proforientation.Controllers
     public class TestController : Controller
     {
 
-        private readonly TestRepository _testRepository;
+        private readonly ITestRepository _testRepository;
 
-        public TestController(TestRepository testRepository)
+        public TestController(ITestRepository testRepository)
         {
             _testRepository = testRepository;
         }

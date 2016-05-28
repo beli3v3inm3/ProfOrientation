@@ -1,17 +1,39 @@
 ﻿@{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Bucket";
 }
 
-<h2>title</h2>
-
 <div class="container" ng-app="app">
-    <div class="row" ng-controller="BucketController">
+    <div class="row" ng-controller="BucketController" >
         <div class="list-group" ng-repeat="order in orders">
             <a href="#" class="list-group-item">
                 <h4 class="list-group-item-heading">{{order.Name}}</h4>
                 <p class="list-group-item-text">{{order.Description}}</p>
             </a>
         </div>
-        <button type="button" class="btn btn-primary" ng-click="SubmitOrders()">Submit</button>
+        <div class="text-center" ng-show="isEmpty">
+            <h2>{{clearBucket}}</h2>
+        </div>
+        <button type="button" class="btn btn-primary" ng-click="SubmitOrders()" ng-hide="isEmpty" data-toggle="modal" data-target="#myModal">Submit</button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
