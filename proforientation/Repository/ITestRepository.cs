@@ -9,5 +9,6 @@ namespace proforientation.Repository
         IEnumerable<Answer> GetTestByAnswerId(int id);
         IEnumerable<Test> GetTestById(int id);
         IEnumerable<Profession> GetProfessions();
+        void SubmitTestResult(UsersToProf usersToProf);
     }
 }

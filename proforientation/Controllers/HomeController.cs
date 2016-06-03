@@ -36,7 +36,8 @@ namespace proforientation.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetAllProfessions() => Json(_professionRepository.GetProfessions(), JsonRequestBehavior.AllowGet);
+        public JsonResult GetAllProfessions() =>
+            Json(_professionRepository.GetProfessions(), JsonRequestBehavior.AllowGet);
 
         [HttpGet]
         public JsonResult GetDetailsByProfessionId(int id)

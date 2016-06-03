@@ -25,11 +25,16 @@
             return $http.get('/test/GetAllProfessions');
         }
 
+        function submitTest(testResult) {
+            return $http.post('/test/TestResult', testResult);
+        }
+
         var service = {
             getAllTest: getAllTest,
             getTestById: getTestById,
             getAnswerByTestId: getAnswerByTestId,
-            getAllProfessions: getAllProfessions
+            getAllProfessions: getAllProfessions,
+            submitTest: submitTest
         };
 
         return service;

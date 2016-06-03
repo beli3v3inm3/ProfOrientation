@@ -35,5 +35,19 @@ namespace proforientation.Repository
         }
 
         public IEnumerable<Profession> GetProfessions() => _dbContext.Professions;
+
+        public void SubmitTestResult(UsersToProf usersToProf)
+        {
+            var add = new UsersToProf
+            {
+                UserId = usersToProf.UserId,
+                ProfId = usersToProf.ProfId
+            };
+
+            var checkData = _dbContext.UsersToProfs.Any(_ => _.ProfId == add.ProfId && _.UserId == add.UserId);
+            if (checkData) return;
+            _dbContext.UsersToProfs.Add(add);
+            _dbContext.SaveChanges();
+        }
     }
 }

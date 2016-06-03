@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using proforientation.Models;
 using proforientation.Repository;
 
@@ -31,5 +32,24 @@ namespace proforientation.Controllers
 
         [HttpGet]
         public JsonResult GetAllProfessions() => Json(_testRepository.GetProfessions(), JsonRequestBehavior.AllowGet);
+
+        [HttpPost]
+        public JsonResult TestResult(UsersToProf usersToProf)
+        {
+            var user = User.Identity.GetUserId();
+            if (!ModelState.IsValid) return Json(new { Respone = "Failure" });
+
+            var submitTest = new UsersToProf()
+            {
+                ProfId = usersToProf.ProfId,
+                UserId = user
+            };
+            _testRepository.SubmitTestResult(submitTest);
+            return Json(new
+            {
+                redirectUrl = Url.Action("Index", "Result"),
+                isRedirect = true
+            });
+        }
     }
 }

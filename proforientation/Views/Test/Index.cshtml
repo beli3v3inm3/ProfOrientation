@@ -11,14 +11,17 @@
 
 
             <h2>{{q.Id}}. {{q.Question}}</h2>
-            <div id="rdbuttons"  ng-repeat="a in testAnswers">
-               <input type="radio" name="inlineRadioOptions" ng-model="currentAnswer" ng-value="a" ng-click="setAnswer(a.ScoreAnswer, a.Id)"><label>{{a.Name}}</label>
-             </div>
+            <div id="rdbuttons" ng-repeat="a in testAnswers">
+                <input type="radio" name="inlineRadioOptions" ng-model="currentAnswer" ng-value="a" ng-click="setAnswer(a.ScoreAnswer, a.Id)"><label>{{a.Name}}</label>
+            </div>
 
             <button type="button" class="btn btn-primary" ng-click="nextQuestion()">Next</button>
             <button type="submit" class="btn btn-primary btn-submit" ng-click="onSubmit()">Submit</button>
-            <div class="text-center" ng-show="showResult">
-                <h4>You proffesion: {{result}} !</h4>
+            <div id="proflist" class="text-center list-group" ng-show="showResult" ng-repeat="r in result">
+                <a href="#" class="list-group-item" ng-click="showProfessions(r.Id)">
+                    <h4 class="list-group-item-heading">{{r.Name}}</h4>
+                    <p class="list-group-item-text">{{r.Name}}</p>
+                </a>
             </div>
         </div>
     </div>

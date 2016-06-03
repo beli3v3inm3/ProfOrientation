@@ -64,6 +64,7 @@ namespace proforientation
             kernel.Bind<ITestRepository>().To<TestRepository>();
             kernel.Bind<IBucketRepository>().To<BucketRepository>();
             kernel.Bind<IProfessionRepository>().To<ProfessionRepository>();
+            kernel.Bind<IResultRepository>().To<ResultRepository>();
         }        
     }
 }

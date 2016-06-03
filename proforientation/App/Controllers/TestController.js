@@ -1,13 +1,13 @@
-﻿(function() {
+﻿(function () {
     'use strict';
 
     angular
         .module('app')
         .controller('TestController', TestController);
 
-    TestController.$inject = ['$scope', 'TestService'];
+    TestController.$inject = ['$window', '$scope', 'TestService'];
 
-    function TestController($scope, TestService) {
+    function TestController($window, $scope, TestService) {
 
         $scope.currentAnswer = null;
         $scope.setAnswer = function (answer, id) {
@@ -29,20 +29,20 @@
             var id = 1;
 
             TestService.getTestById(id)
-                .success(function(data) {
+                .success(function (data) {
                     $scope.questions = data;
                     //$scope.getQuestions.push(data);
                 });
             TestService.getAnswerByTestId(id)
-                .success(function(data) {
+                .success(function (data) {
                     $scope.testAnswers = data;
                 });
 
-            $scope.nextQuestion = function() {
+            $scope.nextQuestion = function () {
                 id++;
 
                 TestService.getTestById(id)
-                    .success(function(data) {
+                    .success(function (data) {
                         if (data[0] != null) {
                             $scope.questions = data;
                             //$scope.getQuestions.push(data);
@@ -51,14 +51,14 @@
                             id--;
                             $(".btn-submit")
                                 .show("fast",
-                                    function() {
+                                    function () {
                                     });
 
                         }
                     });
 
                 TestService.getAnswerByTestId(id)
-                    .success(function(data) {
+                    .success(function (data) {
                         if (data[0] != null) {
                             $scope.testAnswers = data;
                             //$scope.getQuestions.push(data);
@@ -67,17 +67,17 @@
                             id--;
                             $(".btn-submit")
                                 .show("fast",
-                                    function() {
+                                    function () {
                                     });
 
                         }
                     });
             };
 
-            $scope.prevQuestion = function() {
+            $scope.prevQuestion = function () {
                 id--;
                 TestService.getTestById(id)
-                    .success(function(data) {
+                    .success(function (data) {
                         if (data[0] != null) {
                             $scope.questions = data;
                             //$scope.currentAnswer = $scope.binding.answers[id];
@@ -87,7 +87,7 @@
                         }
                     });
                 TestService.getAnswerByTestId(id)
-                    .success(function(data) {
+                    .success(function (data) {
                         if (data[0] != null) {
                             $scope.testAnswers = data;
                             $scope.currentAnswer = $scope.binding.answers[id];
@@ -98,11 +98,12 @@
                     });
             };
 
-            $scope.onSubmit = function() {
+            $scope.onSubmit = function () {
                 $scope.score = null;
                 $scope.showResult = true;
+                $scope.result = [];
                 angular.forEach($scope.binding.answers,
-                    function(value, key) {
+                    function (value, key) {
                         $scope.score += value;
                     });
 
@@ -112,11 +113,26 @@
                     $scope.profesions.forEach(function (profession) {
 
                         if ($scope.score >= profession.ScoreMin && $scope.score <= profession.ScoreMax) {
-                            $scope.result = profession.Name;
+                            $scope.result.push({
+                                Id: profession.Id,
+                                Name: profession.Name
+                            });
                         }
 
                     });
                 });
+            };
+
+            $scope.showProfessions = function (id) {
+                var profData = {
+                    ProfId: +id
+                };
+                TestService.submitTest(profData)
+                    .success(function(json) {
+                        if (json.isRedirect) {
+                            window.location.href = json.redirectUrl;
+                        }
+                    });
             };
         }
     }

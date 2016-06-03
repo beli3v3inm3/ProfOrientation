@@ -17,11 +17,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Proforientation", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
                     <li>@Html.ActionLink("Test", "Index", "Test")</li>
                     <li>@Html.ActionLink("Bucket", "Index", "Bucket")</li>
                 </ul>
@@ -33,7 +33,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Proforientation</p>
         </footer>
     </div>
 
@@ -45,6 +45,8 @@
     <script src="~/App/Services/HomeService.js"></script>
     <script src="~/App/Controllers/BucketController.js"></script>
     <script src="~/App/Services/BucketService.js"></script>
+    <script src="~/App/Controllers/ResultController.js"></script>
+    <script src="~/App/Services/ResultService.js"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

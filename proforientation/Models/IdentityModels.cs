@@ -29,6 +29,8 @@ namespace proforientation.Models
         public virtual DbSet<Profession> Professions { get; set; }
         public virtual DbSet<Answer> Answers { get; set; }
         public virtual DbSet<Bucket> Buckets { get; set; }
+        public virtual DbSet<UsersToProf> UsersToProfs { get; set; }
+        public virtual DbSet<SubProfession> SubProfessions { get; set; }
 
         public static ApplicationDbContext Create()
         {
